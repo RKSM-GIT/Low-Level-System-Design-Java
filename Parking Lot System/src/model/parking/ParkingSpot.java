@@ -6,14 +6,14 @@ import model.vehicle.Vehicle;
 public class ParkingSpot implements Comparable<ParkingSpot> {
 
     private final String id;
-    private final Integer floorNumber;
+    private final Integer floorNo;
     private Vehicle occupiedBy;
     private final SpotType spotType;
     private final Double distanceFromEntrance;
 
-    public ParkingSpot(String id, Integer floorNumber, SpotType spotType, Double distanceFromEntrance) {
+    public ParkingSpot(String id, Integer floorNo, SpotType spotType, Double distanceFromEntrance) {
         this.id = id;
-        this.floorNumber = floorNumber;
+        this.floorNo = floorNo;
         this.spotType = spotType;
         this.distanceFromEntrance = distanceFromEntrance;
     }
@@ -23,16 +23,14 @@ public class ParkingSpot implements Comparable<ParkingSpot> {
     }
 
     public void allocateVehicle(Vehicle vehicle) {
-        if(!isFree()) {
+        if (!isFree()) {
             throw new IllegalStateException("Parking spot is already allocated");
         }
         occupiedBy = vehicle;
     }
 
-    public Vehicle deallocateVehicle() {
-        Vehicle vehicle = occupiedBy;
+    public void deallocateVehicle() {
         occupiedBy = null;
-        return vehicle;
     }
 
     // Getters
@@ -40,8 +38,8 @@ public class ParkingSpot implements Comparable<ParkingSpot> {
         return id;
     }
 
-    public Integer getFloorNumber() {
-        return floorNumber;
+    public Integer getFloorNo() {
+        return floorNo;
     }
 
     public Vehicle getOccupiedBy() {
