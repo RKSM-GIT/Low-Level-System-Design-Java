@@ -10,6 +10,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TicketService {
 
+    private static class TickerServiceHolder {
+        private static final TicketService instance = new TicketService();
+    }
+
+    public static TicketService getInstance() {
+        return TickerServiceHolder.instance;
+    }
+
     private final Map<String, Ticket> ticketMap = new ConcurrentHashMap<>();
 
     public Ticket createTicket(Vehicle vehicle, ParkingSpot parkingSpot) {

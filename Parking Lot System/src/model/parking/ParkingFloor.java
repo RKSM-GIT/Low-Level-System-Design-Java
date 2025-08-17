@@ -55,7 +55,7 @@ public class ParkingFloor {
         freeSpotsByType.get(spot.getSpotType()).add(spot);
     }
 
-    public int getFloorNumber() {
+    public int getFloorNo() {
         return floorNo;
     }
 }
